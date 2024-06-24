@@ -12,7 +12,7 @@ class Maze():
                 colms: int,
                 cell_size_x: int,
                 cell_size_y: int,
-                win: Window
+                win: Window = None
                 ) -> None:
         self.x1 = x1
         self.y1 = y1
