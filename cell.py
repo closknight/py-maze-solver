@@ -11,6 +11,7 @@ class Cell():
         self._y1 = None
         self._y2 = None
         self._win: Window = win
+        self.visited = False
 
     def draw(self, x1:int, y1:int, x2:int, y2:int) -> None:        
         self._x1 = x1
@@ -22,14 +23,14 @@ class Cell():
         top_right = Point(x2, y1)
         bottom_left = Point(x1, y2)
         bottom_right = Point(x2, y2)
-        if self.has_left_wall:
-            self._win.draw_line(Line(top_left, bottom_left))
-        if self.has_right_wall:
-            self._win.draw_line(Line(top_right, bottom_right))
-        if self.has_top_wall:
-            self._win.draw_line(Line(top_left, top_right))
-        if self.has_bottom_wall:
-            self._win.draw_line(Line(bottom_left, bottom_right))
+        color = "black" if self.has_left_wall else "white"
+        self._win.draw_line(Line(top_left, bottom_left), fill_color=color)
+        color = "black" if self.has_right_wall else "white"
+        self._win.draw_line(Line(top_right, bottom_right), fill_color=color)
+        color = "black" if self.has_top_wall else "white"
+        self._win.draw_line(Line(top_left, top_right), fill_color=color)
+        color = "black" if self.has_bottom_wall else "white"
+        self._win.draw_line(Line(bottom_left, bottom_right), fill_color=color)
 
 
     def center(self) -> Point:
